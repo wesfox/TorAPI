@@ -4,7 +4,7 @@ build/*
 !build/.empty
 
 secret/*
-!secret/.empty
+!secret/secret.template.ts
 
 logs/*
 !logs/.empty

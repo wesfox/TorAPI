@@ -18,6 +18,7 @@
     "express-session": "^1.15.6",
     "install": "^0.12.2",
     "npm": "^6.5.0",
+    "serve-index": "^1.9.1",
     "torrent-search-api": "^2.0.4",
     "typescript": "^3.2.2",
     "winston": "^3.1.0"
@@ -28,6 +29,7 @@
     "@types/express": "^4.16.0",
     "@types/express-session": "^1.15.11",
     "@types/mongodb": "^3.1.18",
+    "@types/serve-index": "^1.7.29",
     "ts-node": "^7.0.1"
   }
 }

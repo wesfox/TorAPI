@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import asyncHandler from 'express-async-handler'
 import {searchApi, EnrichedTorrent} from './torrent_search_api'
 import path from 'path'
+import serveIndex from 'serve-index'
 
 import {auth} from './middleware';
 import {logger} from './logger';
@@ -54,4 +55,7 @@ app.get('/download', (req, res) => {
   res.redirect("/search")
 });
 
-app.listen(3000)
+app.use('/browseDownloading',serveIndex((process.env.DOWNLOAD_DIR as string), {'icons': true}))
+app.use('/browseDownloaded',serveIndex((process.env.DOWNLOADING_DIR as string), {'icons': true}))
+
+app.listen(process.env.PORT ? process.env.PORT : 3000)

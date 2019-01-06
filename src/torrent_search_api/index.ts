@@ -2,7 +2,7 @@ import TorrentSearchApi, { Torrent } from 'torrent-search-api';
 import atob from 'atob';
 import path from 'path'
 
-import {torrentToken} from '../../secret/userdb'
+import {torrentToken} from '../../secret/secret'
 
 TorrentSearchApi.enableProvider('YggTorrent', torrentToken.login, torrentToken.mdp)
 

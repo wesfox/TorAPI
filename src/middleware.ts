@@ -1,6 +1,6 @@
 import express = require('express'); 
 
-import {UserDB} from '../secret/userdb'
+import {UserDB} from '../secret/secret'
 import {logger} from './logger';
 
 export const auth:express.Handler = (req, res, next) => {
