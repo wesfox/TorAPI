@@ -57,16 +57,20 @@ app.get('/download', (req, res) => {
 });
 
 app.use(
-  '/browseDownloading', 
-  serveStatic((process.env.DOWNLOAD_DIR as string)), 
-  serveIndex((process.env.DOWNLOAD_DIR as string), 
-  {'icons': true})
+  '/browseDownloaded', 
+  serveStatic(path.join(__dirname,(process.env.DOWNLOAD_DIR as string))), 
+  serveIndex(
+    path.join(__dirname,(process.env.DOWNLOAD_DIR as string)), 
+    {'icons': true}
+  )
 )
 app.use(
-  '/browseDownloaded', 
-  serveStatic((process.env.DOWNLOADING_DIR as string)), 
-  serveIndex((process.env.DOWNLOADING_DIR as string), 
-  {'icons': true})
+  '/browseDownloading', 
+  serveStatic(path.join(__dirname,(process.env.DOWNLOADING_DIR as string))), 
+  serveIndex(
+    path.join(__dirname,(process.env.DOWNLOADING_DIR as string)), 
+    {'icons': true}
+  )
 )
 
 app.listen(process.env.PORT ? process.env.PORT : 3000)
