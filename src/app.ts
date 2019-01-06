@@ -56,7 +56,7 @@ app.get('/download', (req, res) => {
   res.redirect("/search")
 });
 
-app.use(
+app.get(
   '/downloaded', 
   serveStatic(path.join(__dirname,(process.env.DOWNLOAD_DIR as string))), 
   serveIndex(
@@ -64,7 +64,7 @@ app.use(
     {'icons': true}
   )
 )
-app.use(
+app.get(
   '/downloading', 
   serveStatic(path.join(__dirname,(process.env.DOWNLOADING_DIR as string))), 
   serveIndex(
