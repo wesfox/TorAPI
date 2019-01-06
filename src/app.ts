@@ -57,7 +57,7 @@ app.get('/download', (req, res) => {
 });
 
 app.use(
-  '/browseDownloaded', 
+  '/downloaded', 
   serveStatic(path.join(__dirname,(process.env.DOWNLOAD_DIR as string))), 
   serveIndex(
     path.join(__dirname,(process.env.DOWNLOAD_DIR as string)), 
@@ -65,7 +65,7 @@ app.use(
   )
 )
 app.use(
-  '/browseDownloading', 
+  '/downloading', 
   serveStatic(path.join(__dirname,(process.env.DOWNLOADING_DIR as string))), 
   serveIndex(
     path.join(__dirname,(process.env.DOWNLOADING_DIR as string)), 
