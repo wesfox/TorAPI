@@ -56,21 +56,21 @@ app.get('/download', (req, res) => {
   res.redirect("/search")
 });
 
-app.get(
+app.use(
   '/downloaded', 
   serveStatic(path.join(__dirname,(process.env.DOWNLOAD_DIR as string))), 
   serveIndex(
     path.join(__dirname,(process.env.DOWNLOAD_DIR as string)), 
     {'icons': true}
   )
-)
-app.get(
+);
+app.use(
   '/downloading', 
   serveStatic(path.join(__dirname,(process.env.DOWNLOADING_DIR as string))), 
   serveIndex(
     path.join(__dirname,(process.env.DOWNLOADING_DIR as string)), 
     {'icons': true}
   )
-)
+);
 
 app.listen(process.env.PORT ? process.env.PORT : 3000)
