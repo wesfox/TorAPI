@@ -38,6 +38,8 @@ app.get('/login', asyncHandler(async (req, res) => {
 
 app.use(auth)
 
+app.get('/', (req,res) => res.redirect('/search'))
+
 app.get('/search', asyncHandler(async (req, res) => {
   if(req.query.q && req.query.q !== ""){
     const eTorrents = await searchApi.search(req.query.q);
