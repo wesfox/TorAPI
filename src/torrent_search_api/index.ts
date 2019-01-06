@@ -93,6 +93,6 @@ class SearchAPI{
 if(process.env.TORRENT_DIR === undefined){
     throw Error("TORRENT_DIR is undefined")
 }
-const searchApi = new SearchAPI((process.env.TORRENT_DIR as string))
+const searchApi = new SearchAPI(path.join(__dirname, (process.env.TORRENT_DIR as string)))
 
 export {searchApi, EnrichedTorrent};
