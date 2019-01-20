@@ -1,6 +1,6 @@
 # TorAPI
 
-On construction, aim to add a web UI, with account and quotas management to the https://github.com/JimmyLaurent/torrent-search-api package.
+On construction, aim to add a web UI, with instant streaming, account and quotas management to the https://github.com/JimmyLaurent/torrent-search-api package.
 
 > cp secret/secret.template.ts secret/secret.ts
 
