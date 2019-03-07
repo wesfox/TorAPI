@@ -65,12 +65,12 @@ class SearchAPI{
         })
     }
 
-    public download(torrent:Torrent, name:string){
+    public download(torrent:Torrent, name:string, callback:any){
         TorrentSearchApi.downloadTorrent(torrent, path.join(this.folder, name))
-        .then(()=>true)
+        .then(()=>callback(null,true))
         .catch((err) => {
             console.error(err)
-            return false
+            callback(err,false)
         })
     }
 

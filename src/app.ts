@@ -45,17 +45,22 @@ app.get('/search', asyncHandler(async (req, res) => {
     const eTorrents = await searchApi.search(req.query.q);
     res.render('pages/search', {eTorrents, query: req.query.q});
   }else{
-    res.render('pages/search', {});
+    res.render('pages/search', {err:req.query.err, success:req.query.success});
   }
 }));
 
 app.get('/download', (req, res) => {
   if(req.query.b64 && req.query.b64 !== ""){
     const torrent = searchApi.b64ToTor(req.query.b64)
-    searchApi.download(torrent, torrent.title.replace(' ','_')+".torrent");
+    searchApi.download(torrent, torrent.title.replace(' ','_')+".torrent", function(err:Error,res:any){
+      if(err){
+        res.redirect("/search?err=Error%20while%20downloading")
+      }else{
+        res.redirect("/search?success=1")
+      }
+    });
     if(req.session)logger.info(`${req.session.authed.login} downloaded the file : ${torrent.title}`)
   }
-  res.redirect("/search")
 });
 
 app.use(

@@ -16,6 +16,12 @@
 </div>
 
 <main>
+    <% if (locals.success) { %>
+        <div class="text-xl-center text-dark"><br><br>Torrent downloaded successfully</div>
+    <% } %>
+    <% if (locals.err) { %>
+        <div class="text-xl-center text-dark"><br><br>Error : <%= locals.err %></div>
+    <% } %>
     <% if (locals.eTorrents) { %>
         <% if (eTorrents.length) { %>
             <ul class="list-group"></ul>
