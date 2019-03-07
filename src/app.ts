@@ -52,7 +52,7 @@ app.get('/search', asyncHandler(async (req, res) => {
 app.get('/download', (req, res) => {
   if(req.query.b64 && req.query.b64 !== ""){
     const torrent = searchApi.b64ToTor(req.query.b64)
-    searchApi.download(torrent, torrent.title.replace(' ','_')+".torrent", function(err:Error,res:any){
+    searchApi.download(torrent, torrent.title.replace(' ','_')+".torrent", function(err:Error,downloadStatus:any){
       if(err){
         res.redirect("/search?err=Error%20while%20downloading")
       }else{
