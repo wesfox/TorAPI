@@ -8,3 +8,5 @@ secret/*
 
 logs/*
 !logs/.empty
+
+.DS_STORE

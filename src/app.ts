@@ -60,17 +60,17 @@ app.get('/download', (req, res) => {
 
 app.use(
   '/downloaded', 
-  serveStatic(path.join(__dirname,(process.env.DOWNLOAD_DIR as string))), 
+  serveStatic(process.env.DOWNLOAD_DIR as string), 
   serveIndex(
-    path.join(__dirname,(process.env.DOWNLOAD_DIR as string)), 
+    process.env.DOWNLOAD_DIR as string, 
     {'icons': true}
   )
 );
 app.use(
   '/downloading', 
-  serveStatic(path.join(__dirname,(process.env.DOWNLOADING_DIR as string))), 
+  serveStatic(process.env.DOWNLOADING_DIR as string), 
   serveIndex(
-    path.join(__dirname,(process.env.DOWNLOADING_DIR as string)), 
+    process.env.DOWNLOADING_DIR as string, 
     {'icons': true}
   )
 );
