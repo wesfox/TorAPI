@@ -3,6 +3,9 @@ node_modules
 build/*
 !build/.empty
 
+symlinks/*
+!.hidden
+
 secret/*
 !secret/secret.template.ts
 
