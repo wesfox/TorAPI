@@ -9,13 +9,13 @@
         </div>
         <div class="d-flex justify-content-center">
             <div class="p-2">
-                <button type="submit" class="btn btn-primary btn">Search</button>
+                <button type="submit" class="btn btn-primary btn" onclick="searchClickEvent()">Search</button>
             </div>
         </div>
     </form>
 </div>
-
 <main>
+    <div class="text-xl-center text-dark" id="waiting-download-text"></div>
     <% if (locals.success) { %>
         <div class="text-xl-center text-dark"><br><br>Torrent downloaded successfully</div>
     <% } %>
@@ -24,7 +24,7 @@
     <% } %>
     <% if (locals.eTorrents) { %>
         <% if (eTorrents.length) { %>
-            <ul class="list-group"></ul>
+            <ul class="list-group" style="margin-top:15px"></ul>
             <% eTorrents.forEach(function(eTorrent){ %>
                 <li class="list-group-item">
                     <div class="row">
@@ -43,17 +43,21 @@
             <% }); %>
             </ul>
         <% } else { %>
-            <div class="text-xl-center text-dark"><br><br>No torrent found...</div>
+            <div class="text-xl-center text-dark" id="status-info"><br>No torrent found...</div>
         <% } %>
     <% } else { %>
-        <div class="text-xl-center text-dark"><br><br>Waiting for a request...</div>
+        <div class="text-xl-center text-dark" id="status-info"><br>Waiting for a request...</div>
     <% } %>
 </main>
 </div>
 <script>
-        function download(b64){
-            window.location = '/download?b64=' + b64;
-        }
+    function searchClickEvent(){
+        document.getElementById("waiting-download-text").innerHTML = "<br>Fetching the trackers...<br><br>";
+        document.getElementById("status-info").innerHTML = "";
+    }
+    function download(b64){
+        window.location = '/download?b64=' + b64;
+    }
 </script>
 
 <% include ../partials/bot %>
